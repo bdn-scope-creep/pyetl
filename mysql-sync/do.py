@@ -26,6 +26,7 @@ class Upsert(object):
         self.vals = []
 
     def to_sql(self):
+        # return """ INSERT INTO BLOGPOSTs (postId, postTitle, postPublished) VALUES (5, 'Python Tutorial', '2019-08-04') ON DUPLICATE KEY UPDATE postId = 5, postTitle = 'Python Tutorial', postPublished = '2019-08-04';""".format(table, ", ".join(self.vals), " AND ".join(self.keys)).strip()
         return """
             UPDATE {0} SET {1} WHERE {2};
         """.format(table, ", ".join(self.vals), " AND ".join(self.keys)).strip()
